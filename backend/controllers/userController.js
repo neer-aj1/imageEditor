@@ -1,5 +1,6 @@
 import asyncHandler from "express-async-handler";
 import User from "../models/userModel.js";
+import generateToken from "../utils/tokenGeneration.js";
 
 // post method to register the user
 const register = asyncHandler (
@@ -39,6 +40,7 @@ const login = asyncHandler(
         const matchedPasswords = await user.matchPassword(password);
         console.log(`matched passwords ${matchedPasswords}`);
         if(user && matchedPasswords){
+            generateToken(res, user._id);
             res.status(201).json({
                 name: user.fname,
                 email: user.email,
@@ -51,4 +53,16 @@ const login = asyncHandler(
     }
 );
 
-export {register, login};
+const logout = asyncHandler(
+    async (req, res) => {
+        res.cookie('jwt', '', {
+            httpOnly: true,
+            expires: new Date(0),
+        });
+        res.status(200).json({
+            message:'Logged out successfully'
+        });
+    }
+);
+
+export {register, login, logout};
