@@ -23,7 +23,7 @@ const userSchema = mongoose.Schema({
 },{timestamps: true});
 
 
-// checking if the password is chenged or not before saying during the update
+// checking if the password is changed or not before saving during the update
 userSchema.pre('save', async function(next){
     if(!this.isModified('password')) {
         return next();
