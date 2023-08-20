@@ -25,14 +25,15 @@ const userSchema = mongoose.Schema({
 
 // checking if the password is chenged or not before saying during the update
 userSchema.pre('save', async function(next){
-    if(!this.isModified('password')) {next();}
-
-    const salt = await bcrypt.genSalt(10);
-    this.password= await bcrypt.hash(this.password ,salt);
+    if(!this.isModified('password')) {
+        return next();
+    }
+    this.password= await bcrypt.hash(this.password, 10);
+    next();
 })
 
-userSchema.method.matchPassword = async (passwordEnterd) => {
-    return  await bcrypt.compare(this.password, passwordEnterd) ;   //comparing the hashed and plain text passwords
+userSchema.methods.matchPassword = async function(passwordEnterd){
+    return await bcrypt.compare(passwordEnterd, this.password) ;   //comparing the hashed and plain text passwords
 }
 
 const User = mongoose.model('User', userSchema);

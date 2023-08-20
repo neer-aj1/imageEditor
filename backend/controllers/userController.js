@@ -19,7 +19,7 @@ const register = asyncHandler (
         });
 
         if(user){
-            res.status(200).json({
+            res.status(201).json({
                 fname: user.fname,
                 email: user.email,
             });
@@ -31,4 +31,24 @@ const register = asyncHandler (
     }
 );
 
-export {register};
+// login user
+const login = asyncHandler(
+    async (req, res) => {
+        const {email, password} = req.body;
+        const user = await User.findOne({email});
+        const matchedPasswords = await user.matchPassword(password);
+        console.log(`matched passwords ${matchedPasswords}`);
+        if(user && matchedPasswords){
+            res.status(201).json({
+                name: user.fname,
+                email: user.email,
+            });
+        }
+        else{
+            res.status(400);
+            throw new Error("Invalid Credentials");
+        }
+    }
+);
+
+export {register, login};

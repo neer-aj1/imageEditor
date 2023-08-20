@@ -13,4 +13,10 @@ const errorHandler = (err, req, res, next) => {
     });
 }
 
-export {errorHandler};
+const routeNotFound = (req, res, next) => {
+    const error = new Error('Route not Found');
+    res.status(400);
+    next();
+}
+
+export {errorHandler, routeNotFound};
