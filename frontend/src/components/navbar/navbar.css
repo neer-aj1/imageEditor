@@ -1,0 +1,19 @@
+.navbar{
+    padding-top: 20px;
+    color: white;
+    background-color: #054A91;
+}
+.navbar nav{
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar_links ul{
+    display: flex;
+    gap: 30px;
+    color: black;
+}
+
+.linkStyle{
+    color: white;  
+}

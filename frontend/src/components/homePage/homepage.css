@@ -1,0 +1,30 @@
+.homepage{
+    padding-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    background-color: #054A91;
+    border-radius: 0 0 400px 0;
+}
+
+.homepage_left img{
+    width: 500px;
+}
+
+.homepage_right{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    color: white;
+}
+
+.homepage_right button{
+    background-color: transparent;
+    width: 100px;
+    height: 35px;
+}
+.getStarted{
+    color: white;
+    border: 1px solid white;
+}
