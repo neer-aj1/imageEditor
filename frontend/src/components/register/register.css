@@ -6,7 +6,7 @@
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
 }
-.master{
+.registermaster{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -22,14 +22,13 @@ form{
     padding: 30px 50px;
     border-radius: 10px;
     gap: 20px;
-    
 }
 
 .heading{
     padding-left: 10px;
 }
 
-label{
+.registerLabel{
     position: absolute;
     margin: 10px 0 0 10px;
     padding: 0 5px;
@@ -41,16 +40,15 @@ label{
     justify-content: space-between;
 }
 
-input{
+.registerInput{
     width: 270px;
     height: 40px;
     border-radius: 10px;
     padding: 0 10px;
 }
 
-.submitbtn{
+.registerSubmitbtn{
     width: 90px;
     height: 30px;
     background-color: white;
-    
 }

@@ -1,8 +1,29 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './navbar.css';
+import { useLogoutMutation } from '../../slices/userApiSlice';
+import { removeUserInfo } from '../../slices/authenticationSlice';
+import { useSelector, useDispatch } from 'react-redux';
 
 function Navbar() {
+
+  const { userInfo } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [logout] = useLogoutMutation();
+
+  const logoutHandler = async () => {
+    try {
+      await logout().unwrap();
+      dispatch(removeUserInfo());
+      navigate('/');
+    }
+    catch (error) {
+      console.log(error);
+    }
+
+  }
+
   return (
     <div className="navbar container2">
       <div className="navbar_container">
@@ -22,7 +43,7 @@ function Navbar() {
                 <Link to={'/register'} className='linkStyle'>Register</Link>
               </li>
               <li>
-                <Link to={''} className='linkStyle'>Logout</Link>
+                <Link to={''} onClick={logoutHandler} className='linkStyle'>Logout</Link>
               </li>
             </ul>
           </div>
