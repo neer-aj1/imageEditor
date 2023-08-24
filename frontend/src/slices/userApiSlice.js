@@ -17,7 +17,7 @@ export const userApiSlice = apiSlice.injectEndpoints({
             }),
         }),
         logout: builder.mutation({
-            query: (data) => ({
+            query: () => ({
                 url: '/imageEditor/logout',
                 method: 'POST',
             }),

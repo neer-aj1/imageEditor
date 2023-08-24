@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import './adjust.css'
 
-export const Adjust = () => {
-  const [bright, setBright] = useState(0);
+const Adjust = () => {
+  const [bright, setBright] = useState(100);
   const handleBrightness = (e) => {
-    console.log(e.target.value);
+    setBright(e.target.value);
+    Brightness(`${bright}`);
   }
   const handleContrast = (e) => {
     console.log(e.target.value);
@@ -25,8 +26,8 @@ export const Adjust = () => {
     <div className="adjust">
       <h3 className='adjustHeading'>ADJUST</h3>
       <div>
-        <p>Brightness</p>
-        <input onChange={handleBrightness} className='slideInput' type="range" />
+        <p style={{display:'flex', justifyContent: 'space-between'}}>Brightness <span>{bright}%</span> </p>
+        <input id='brightness' onChange={handleBrightness} className='slideInput' type="range" value={bright} max={200} min={0}/>
       </div>
       <div>
         <p>Contrast</p>
@@ -51,3 +52,5 @@ export const Adjust = () => {
     </div>
   )
 }
+
+export {Adjust}

@@ -9,7 +9,7 @@ import { Adjust } from '../adjust/Adjust';
 
 const Editor = () => {
     const [image, setImage] = useState(null);
-    const [opt, setOpt] = useState('');
+    const [opt, setOpt] = useState("");
     const ref = useRef();
     const handleFileUpload = () => {
         ref.current.click();
@@ -25,7 +25,7 @@ const Editor = () => {
     }
     return (
         <div className="editorContainer">
-            <div className="editor">
+            <div className="editor" >
                 <div className="editor_navbar">
                     <div className="editor_navbar_options">
                         <div onClick={() => setOpt("ADJUST")} className='editor_navbar_options_cont'>
@@ -48,11 +48,11 @@ const Editor = () => {
                     </div>
                 </div>
                 <div className='editor_properties'>
-                    {opt === "ADJUST" && <Adjust />}
+                    {opt === "ADJUST" && <Adjust/>}
                 </div>
                 <div className='editor_imageArea_container'>
                     <div className='editor_imageArea'>
-                        {image && <img src={image} alt='Uploaded Image' style={{ maxWidth: '100%' }} />}
+                        {image && <img id='editImage' src={image} alt='Uploaded Image' style={{ maxWidth: '100%', height:Brightness}} />}
                     </div>
                 </div>
             </div>

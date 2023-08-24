@@ -43,7 +43,7 @@ function Navbar() {
                 <Link to={'/register'} className='linkStyle'>Register</Link>
               </li>
               <li>
-                <Link to={'/edit'} onClick={logoutHandler} className='linkStyle'>Edit Image</Link>
+                <Link to={'/edit'} className='linkStyle'>Edit Image</Link>
               </li>
               <li>
                 <Link to={''} onClick={logoutHandler} className='linkStyle'>Logout</Link>
