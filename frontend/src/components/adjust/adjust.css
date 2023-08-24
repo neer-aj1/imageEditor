@@ -1,0 +1,22 @@
+.adjust{
+    display: flex;
+    flex-direction: column;
+    color: white;
+    gap: 25px;
+}
+
+.adjustHeading{
+    margin-bottom: 30px;
+}
+
+.slideInput{
+    width: 200px;
+    height: 3px;
+}
+
+#slider {
+    outline: none;
+    width: 400px;
+    height: 3px;
+    background-color: #555;
+  }

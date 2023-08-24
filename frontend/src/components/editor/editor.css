@@ -15,9 +15,10 @@
     display: flex;
     background-color: rgba(26, 26, 26, 0.12);
     height: 80vh;
-    width: 60%;
+    width: 70%;
     box-shadow: 10px 10px 50px 0px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
+    align-items: center;
 }
 
 .editor_navbar {
@@ -42,6 +43,7 @@
 }
 
 .editor_navbar_options_cont {
+    cursor: pointer;
     display: flex;
     gap: 8px;
     flex-direction: column;
@@ -61,4 +63,27 @@
     width: 250px;
     box-sizing: border-box;
     color: white;
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+} 
+
+.editor_imageArea_container{
+    background-color: yellow;
+    box-sizing: border-box;
+    background: transparent;
+    flex: 1;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.editor_imageArea{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    height: 70%;
+    width: 80%;
 }

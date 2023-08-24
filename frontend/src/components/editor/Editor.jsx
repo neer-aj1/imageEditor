@@ -1,17 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import { toast } from 'react-toastify';
 import './editor.css';
-import adjust from '../../assets/color-swatch.png';
-import filter from '../../assets/setting-4.png';
-import crop from '../../assets/scissor.png';
+import adjust from '../../assets/color-swatch.svg';
+import filter from '../../assets/setting-4.svg';
+import crop from '../../assets/scissor.svg';
+import upload from '../../assets/upload.svg';
+import { Adjust } from '../adjust/Adjust';
 
 const Editor = () => {
-    let toBeRendered = 1;
+    const [image, setImage] = useState(null);
     const [opt, setOpt] = useState('');
-    const handleClick = (e) => {
-        let choosen = e.target.innerHTML;
-        console.log(choosen);
-        if (choosen === 'Filers') {
-            setOpt(choosen);
+    const ref = useRef();
+    const handleFileUpload = () => {
+        ref.current.click();
+    };
+    const uploadImage = (e) => {
+        const uploadImage = e.target.files[0];
+        if (uploadImage && uploadImage.type.startsWith('image/')) {
+            const imageUrl = URL.createObjectURL(uploadImage);
+            setImage(imageUrl);
+        } else {
+            toast.error("Upload an image file");
         }
     }
     return (
@@ -19,25 +28,32 @@ const Editor = () => {
             <div className="editor">
                 <div className="editor_navbar">
                     <div className="editor_navbar_options">
-                        <div className='editor_navbar_options_cont'>
+                        <div onClick={() => setOpt("ADJUST")} className='editor_navbar_options_cont'>
                             <img className='editor_icons' src={adjust} alt="adjust image" />
-                            <p className="option" onClick={handleClick}>ADJUST</p>
+                            <p className="option">ADJUST</p>
                         </div>
-                        <div className='editor_navbar_options_cont'>
+                        <div onClick={() => setOpt("FILTER")} className='editor_navbar_options_cont'>
                             <img className='editor_icons' src={filter} alt="filter image" />
-                            <p className="option" onClick={handleClick}>FILTER</p>
+                            <p className="option">FILTER</p>
                         </div>
-                        <div className='editor_navbar_options_cont'>
+                        <div onClick={() => setOpt("CROP")} className='editor_navbar_options_cont'>
                             <img className='editor_icons' src={crop} alt="crop image" />
-                            <p className="option" onClick={handleClick}>CROP</p>
+                            <p className="option">CROP</p>
                         </div>
                     </div>
-                    <div className="editor_navbar_upload editor_navbar_options_cont" >
+                    <input ref={ref} onChange={uploadImage} type="file" name="file" id="file" style={{ display: 'none' }} />
+                    <div onClick={handleFileUpload} className="editor_navbar_upload editor_navbar_options_cont" >
+                        <img src={upload} alt="" />
                         <p>Upload</p>
                     </div>
                 </div>
                 <div className='editor_properties'>
-                    <p>hello</p>
+                    {opt === "ADJUST" && <Adjust />}
+                </div>
+                <div className='editor_imageArea_container'>
+                    <div className='editor_imageArea'>
+                        {image && <img src={image} alt='Uploaded Image' style={{ maxWidth: '100%' }} />}
+                    </div>
                 </div>
             </div>
         </div>
