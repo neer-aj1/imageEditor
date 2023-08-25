@@ -1,23 +1,37 @@
-import React, { useState } from 'react'
-import './adjust.css'
+import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { setBrightness, setContrast, setSaturation, setHue, setSharpness } from '../../slices/filterSlice'
+import './adjust.css';
 
 const Adjust = () => {
+  const dispatch = useDispatch();
   const [bright, setBright] = useState(100);
+  const [contrast, setCont] = useState(100);
+  const [sat, setSat] = useState(100);
+  const [hue, setH] = useState(0);
+  const [sharp, setShp] = useState(0)
+  useEffect(() => {
+    dispatch(setBrightness({ bright }));
+    dispatch(setContrast({ contrast }));
+    dispatch(setSaturation({ sat }));
+    dispatch(setHue({ hue }));
+    dispatch(setSharpness({sharp}));
+  }, [bright, contrast, sat, hue, sharp]);
+
   const handleBrightness = (e) => {
     setBright(e.target.value);
-    Brightness(`${bright}`);
   }
   const handleContrast = (e) => {
-    console.log(e.target.value);
+    setCont(e.target.value);
   }
   const handleHue = (e) => {
-    console.log(e.target.value);
+    setH(e.target.value);
   }
   const handleSaturation = (e) => {
-    console.log(e.target.value);
+    setSat(e.target.value);
   }
   const handleSharpness = (e) => {
-    console.log(e.target.value);
+    setShp(e.target.value);
   }
   const handleTemperature = (e) => {
     console.log(e.target.value);
@@ -26,24 +40,24 @@ const Adjust = () => {
     <div className="adjust">
       <h3 className='adjustHeading'>ADJUST</h3>
       <div>
-        <p style={{display:'flex', justifyContent: 'space-between'}}>Brightness <span>{bright}%</span> </p>
-        <input id='brightness' onChange={handleBrightness} className='slideInput' type="range" value={bright} max={200} min={0}/>
+        <p style={{ display: 'flex', justifyContent: 'space-between' }}>Brightness <span>{bright}%</span> </p>
+        <input id='brightness' onChange={handleBrightness} className='slideInput' value={bright} type="range" max={200} min={0} />
       </div>
       <div>
-        <p>Contrast</p>
-        <input onChange={handleContrast} className='slideInput' type="range" />
+        <p style={{ display: 'flex', justifyContent: 'space-between' }}>Contrast <span>{contrast}%</span> </p>
+        <input onChange={handleContrast} className='slideInput' type="range" value={contrast} max={200} min={0} />
       </div>
       <div>
-        <p>Hue</p>
-        <input onChange={handleHue} className='slideInput' type="range" />
+        <p style={{ display: 'flex', justifyContent: 'space-between' }}>Hue <span>{hue}deg</span> </p>
+        <input onChange={handleHue} className='slideInput' type="range" value={hue}  max={360} min={-360}/>
       </div>
       <div>
-        <p>Saturation</p>
-        <input onChange={handleSaturation} className='slideInput' type="range" />
+        <p style={{ display: 'flex', justifyContent: 'space-between' }}>Saturation <span>{sat}%</span> </p>
+        <input onChange={handleSaturation} className='slideInput' value={sat} type="range" max={200} min={0} />
       </div>
       <div>
-        <p>Sharpness</p>
-        <input onChange={handleSharpness} className='slideInput' type="range" />
+      <p style={{ display: 'flex', justifyContent: 'space-between' }}>Sharpness <span>{sharp}%</span> </p>
+        <input onChange={handleSharpness} className='slideInput' value={sharp} min={0} max={10} step={0.5} type="range" />
       </div>
       <div>
         <p>Temperature</p>
@@ -53,4 +67,4 @@ const Adjust = () => {
   )
 }
 
-export {Adjust}
+export { Adjust }

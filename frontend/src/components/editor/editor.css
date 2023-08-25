@@ -69,14 +69,16 @@
 } 
 
 .editor_imageArea_container{
-    background-color: yellow;
     box-sizing: border-box;
     background: transparent;
     flex: 1;
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
 }
 
 .editor_imageArea{
@@ -86,4 +88,18 @@
     background-color: white;
     height: 70%;
     width: 80%;
+}
+
+.bottons {
+    display: flex;
+    gap: 50px;
+}
+
+.func{
+    width: 80px;
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    background-color:#313131;
 }
