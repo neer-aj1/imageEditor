@@ -10,11 +10,11 @@ import { useSelector } from 'react-redux';
 
 const Editor = () => {
     const [zoomLevel, setZoomLevel] = useState(1);
-    let bri = useSelector(state => state.filter.brightness.bright);
-    let contrast = useSelector(state => state.filter.contrast.contrast);
-    let satur = useSelector(state => state.filter.saturation.sat);
-    let hu = useSelector(state => state.filter.hue.hue);
-    let sh = useSelector(state => state.filter.sharpness.sharp);
+    let bri = useSelector(state => state.filter.brightness);
+    let contrast = useSelector(state => state.filter.contrast);
+    let satur = useSelector(state => state.filter.saturation);
+    let hu = useSelector(state => state.filter.hue);
+    let sh = useSelector(state => state.filter.sharpness);
     const [image, setImage] = useState(null);
     const [opt, setOpt] = useState("");
     const ref = useRef();
@@ -43,16 +43,15 @@ const Editor = () => {
 
             canvas.width = img.width;
             canvas.height = img.height;
-            context.filter = imgStyle.filter; // Apply the same filter to the canvas context
+            context.filter = imgStyle.filter; 
 
-            // Draw the image with filters applied
+            
             context.drawImage(img, 0, 0, img.width, img.height);
 
             const quality = 1;
-            // Convert canvas content to a data URL
+            
             const filteredImageUrl = canvas.toDataURL('image/jpeg', quality); // You can use 'image/png' as well
 
-            // Create a download link
             const a = document.createElement('a');
             a.href = filteredImageUrl;
             a.download = 'filtered_image.jpg';
