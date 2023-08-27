@@ -14,9 +14,9 @@ const errorHandler = (err, req, res, next) => {
 }
 
 const routeNotFound = (req, res, next) => {
-    const error = new Error('Route not Found');
-    res.status(400);
-    next();
+    const error = new Error(`Route not Found - ${req.originalUrl}`);
+    res.status(404);
+    next(error);
 }
 
 export {errorHandler, routeNotFound};

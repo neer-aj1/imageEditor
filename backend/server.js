@@ -13,12 +13,14 @@ const port = process.env.PORT || 5000;
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
+app.use(cookieParser());
+
+conn();
+
 app.use('/imageEditor', userRoutes);
 
 app.use(errorHandler);
 app.use(routeNotFound);
 
-app.use(cookieParser());
-conn();
 app.get('/', (req, res) => res.send('Server is ready'))
 app.listen(port, () => console.log(`Server started on port: ${port}`));

@@ -37,8 +37,13 @@ const login = asyncHandler(
     async (req, res) => {
         const {email, password} = req.body;
         const user = await User.findOne({email});
-        const matchedPasswords = await user.matchPassword(password);
-        console.log(`matched passwords ${matchedPasswords}`);
+        let matchedPasswords;
+        try{
+            matchedPasswords = await user.matchPassword(password);
+        }
+        catch(e){
+            throw new Error("Invalid Credentials")
+        }
         if(user && matchedPasswords){
             generateToken(res, user._id);
             res.status(201).json({

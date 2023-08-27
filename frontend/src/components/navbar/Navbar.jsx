@@ -37,20 +37,25 @@ function Navbar() {
                 <Link to={'/'} className='linkStyle'>Home</Link>
               </li>
               <li>
-                <Link to={'/login'} className='linkStyle'>Login</Link>
-              </li>
-              <li>
-                <Link to={'/register'} className='linkStyle'>Register</Link>
-              </li>
-              <li>
                 <Link to={'/edit'} className='linkStyle'>Edit Image</Link>
               </li>
               <li>
-                <Link to={'/compress'} className='linkStyle'>Compress Image</Link>
+                <Link to={'/compress'} className='linkStyle'>Compress</Link>
               </li>
+              {userInfo ? 
+              <>
               <li>
                 <Link to={''} onClick={logoutHandler} className='linkStyle'>Logout</Link>
               </li>
+              <li>
+                <Link to={'/profile'} className='linkStyle'>{userInfo.name}</Link>
+              </li>
+              </>:
+              <>
+              <li>
+                <Link to={'/login'} className='linkStyle'>Login/Register</Link>
+              </li>
+              </>}
             </ul>
           </div>
         </nav>
