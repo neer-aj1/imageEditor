@@ -1,12 +1,37 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import {useLoginMutation} from '../../slices/userApiSlice';
+import {setUserInfo} from '../../slices/authenticationSlice';
+import {useNavigate} from 'react-router-dom';
 import './login.css';
+import { toast } from 'react-toastify';
 
 function Login() {
-  const handleSubmit = (e) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [login, { isLoading }] = useLoginMutation();
+  const {userInfo} = useSelector(state => state.auth);
+  console.log(userInfo);
+  useEffect(() => {
+    if (userInfo) {
+      navigate('/');
+    }
+  }, [navigate, userInfo]);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('submit');
-    if(password !== cpassword) toast.error("Passwords doesn't match");
-  }
+    try{
+      const user = await login({email, password}).unwrap();
+      dispatch(setUserInfo({...user}));
+      navigate('/');
+    }
+    catch(err){
+      toast.error(err?.data?.message || err.error);
+    }
+  };
+
   return (
     <>
       <div onSubmit={handleSubmit} className="loginmaster">
