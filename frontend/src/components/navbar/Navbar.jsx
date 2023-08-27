@@ -46,6 +46,9 @@ function Navbar() {
                 <Link to={'/edit'} className='linkStyle'>Edit Image</Link>
               </li>
               <li>
+                <Link to={'/compress'} className='linkStyle'>Compress Image</Link>
+              </li>
+              <li>
                 <Link to={''} onClick={logoutHandler} className='linkStyle'>Logout</Link>
               </li>
             </ul>

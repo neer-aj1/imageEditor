@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import { toast } from 'react-toastify';
 import './editor.css';
 import adjust from '../../assets/color-swatch.svg';
@@ -50,7 +50,7 @@ const Editor = () => {
 
             const quality = 1;
             
-            const filteredImageUrl = canvas.toDataURL('image/jpeg', quality); // You can use 'image/png' as well
+            const filteredImageUrl = canvas.toDataURL('image/jpeg', quality);
 
             const a = document.createElement('a');
             a.href = filteredImageUrl;
@@ -65,11 +65,11 @@ const Editor = () => {
                 <div className="editor_navbar">
                     <div className="editor_navbar_options">
                         <div onClick={() => setOpt("ADJUST")} className='editor_navbar_options_cont'>
-                            <img className='editor_icons' src={adjust} alt="adjust image" />
+                            <img className='editor_icons' src={filter} alt="adjust image" />
                             <p className="option">ADJUST</p>
                         </div>
                         <div onClick={() => setOpt("FILTER")} className='editor_navbar_options_cont'>
-                            <img className='editor_icons' src={filter} alt="filter image" />
+                            <img className='editor_icons' src={adjust} alt="filter image" />
                             <p className="option">FILTER</p>
                         </div>
                         <div onClick={() => setOpt("CROP")} className='editor_navbar_options_cont'>

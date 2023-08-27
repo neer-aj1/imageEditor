@@ -1,0 +1,48 @@
+.compressMaster {
+    height: 100vh;
+    color: white;
+    background: linear-gradient(180deg, #252525 0%, #DBE4EE 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 40px;
+}
+
+.compress {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    width: 900px;
+    height: 400px;
+    flex-shrink: 0;
+    padding: 50px;
+    border-radius: 50px;
+    background: linear-gradient(180deg, #5D5E5F 0%, rgba(93, 94, 95, 0.00) 100%);
+    box-shadow: 10px 10px 50px 0px rgba(0, 0, 0, 0.25);
+}
+
+.compress_heading {
+    display: flex;
+    width: 100%;
+    padding-left: 550px;
+    margin-bottom: 40px;
+}
+
+.compressUploadImage {
+    width: 200px;
+    height: 80px;
+    border-radius: 20px;
+    background: #FFF;
+    box-shadow: 10px 10px 50px 0px rgba(0, 0, 0, 0.25);
+}
+
+.compressedImageDownload{
+    width: 150px;
+    height: 60px;
+    border-radius: 20px;
+    background: #FFF;
+    box-shadow: 10px 10px 50px 0px rgba(0, 0, 0, 0.25);
+}
