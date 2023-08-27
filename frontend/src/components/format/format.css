@@ -1,0 +1,7 @@
+.convertButtons button {
+    background-color: white;
+    border: 1px solid black;
+    width: 180px;
+    height: 70px;
+    border-radius: 20px;
+}

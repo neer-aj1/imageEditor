@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {useLoginMutation} from '../../slices/userApiSlice';
 import {setUserInfo} from '../../slices/authenticationSlice';
-import {useNavigate} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import './login.css';
 import { toast } from 'react-toastify';
 
@@ -46,7 +46,10 @@ function Login() {
             <label className="login_label" htmlFor="password">Password</label><br />
             <input className='login_input' type="password" name="password" id="password" onChange={(e) => setPassword(e.target.value)}/>
           </div>
+          <div style={{display:'flex',flexDirection:'column', alignItems:'center'}}>
+          <p style={{display:'flex', justifyContent:'space-evenly', gap:'10px'}}>Not registered? <span><Link to='/register'>Register</Link></span></p>
           <button className="loginSubmitbtn" type="submit">Submit</button>
+          </div>
         </form>
       </div>
     </>

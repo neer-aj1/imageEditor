@@ -9,10 +9,17 @@
     justify-content: space-between;
 }
 
+.navbar_logo h4{
+    font-size: 1.4rem;
+}
 .navbar_links ul{
     display: flex;
     gap: 30px;
     color: black;
+}
+
+.navbar_links ul li{
+    font-size: 0.95rem;
 }
 
 .linkStyle{

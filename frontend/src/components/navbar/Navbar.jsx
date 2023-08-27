@@ -42,6 +42,9 @@ function Navbar() {
               <li>
                 <Link to={'/compress'} className='linkStyle'>Compress</Link>
               </li>
+              <li>
+                <Link to={'/format'} className='linkStyle'>Change Format</Link>
+              </li>
               {userInfo ? 
               <>
               <li>

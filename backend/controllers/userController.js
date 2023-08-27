@@ -42,7 +42,7 @@ const login = asyncHandler(
             matchedPasswords = await user.matchPassword(password);
         }
         catch(e){
-            throw new Error("Invalid Credentials")
+            throw new Error("Invalid")
         }
         if(user && matchedPasswords){
             generateToken(res, user._id);
