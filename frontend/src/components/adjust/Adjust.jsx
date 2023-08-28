@@ -59,10 +59,6 @@ const Adjust = () => {
       <p style={{ display: 'flex', justifyContent: 'space-between' }}>Sharpness <span>{sharp}%</span> </p>
         <input onChange={handleSharpness} className='slideInput' value={sharp} min={0} max={10} step={0.5} type="range" />
       </div>
-      <div>
-        <p>Temperature</p>
-        <input onChange={handleTemperature} className='slideInput' type="range" />
-      </div>
     </div>
   )
 }

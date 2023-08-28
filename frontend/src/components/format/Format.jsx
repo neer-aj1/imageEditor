@@ -44,7 +44,7 @@ const Format = () => {
   return (
     <div className="compressMaster">
       <div className='compress_heading'>
-        <h1>Compress Image</h1>
+        <h1>Change Format</h1>
       </div>
       <div className="compress">
         {image ?

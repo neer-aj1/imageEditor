@@ -68,14 +68,6 @@ const Editor = () => {
                             <img className='editor_icons' src={filter} alt="adjust image" />
                             <p className="option">ADJUST</p>
                         </div>
-                        <div onClick={() => setOpt("FILTER")} className='editor_navbar_options_cont'>
-                            <img className='editor_icons' src={adjust} alt="filter image" />
-                            <p className="option">FILTER</p>
-                        </div>
-                        <div onClick={() => setOpt("CROP")} className='editor_navbar_options_cont'>
-                            <img className='editor_icons' src={crop} alt="crop image" />
-                            <p className="option">CROP</p>
-                        </div>
                     </div>
                     <input ref={ref} onChange={uploadImage} type="file" name="file" id="file" style={{ display: 'none' }} />
                     <div onClick={handleFileUpload} className="editor_navbar_upload editor_navbar_options_cont" >
